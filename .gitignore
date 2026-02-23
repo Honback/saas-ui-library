@@ -1,55 +1,32 @@
-# =========================
-# Java / Spring Boot
-# =========================
-backend/target/
-backend/*.jar
-backend/*.war
-backend/*.class
-backend/.mvn/wrapper/maven-wrapper.jar
-
-# IDE
-.idea/
-*.iml
-*.iws
-.vscode/
-*.swp
-*.swo
-*~
-
-# =========================
 # Node / React
-# =========================
 frontend/node_modules/
 frontend/dist/
 frontend/.cache/
 frontend/*.tsbuildinfo
 
-# =========================
-# Docker
-# =========================
-docker-compose.override.yml
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
 
-# =========================
 # Environment
-# =========================
 .env
 .env.local
 .env.*.local
+frontend/.env
+frontend/.env.local
 
-# =========================
 # OS
-# =========================
 .DS_Store
 Thumbs.db
 
-# =========================
 # Logs
-# =========================
 *.log
 logs/
 
-# =========================
 # Build
-# =========================
 build/
 out/
