@@ -1,0 +1,30 @@
+services:
+  postgres:
+    restart: always
+
+  backend:
+    build:
+      target: production
+    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports: []
+    volumes: []
+
+  frontend:
+    build:
+      target: production
+    restart: always
+    ports: []
+    volumes: []
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
