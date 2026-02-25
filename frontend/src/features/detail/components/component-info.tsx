@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Eye, Heart } from 'lucide-react';
 import { Avatar } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { useComponentStore } from '@/stores/component-store';
 import type { ComponentItem } from '@/types/component';
 
 interface ComponentInfoProps {
@@ -9,6 +10,9 @@ interface ComponentInfoProps {
 }
 
 export function ComponentInfo({ component }: ComponentInfoProps) {
+  const { toggleLike, isLiked } = useComponentStore();
+  const liked = isLiked(component.id);
+
   return (
     <div className="space-y-6">
       {/* Title & description */}
@@ -38,10 +42,17 @@ export function ComponentInfo({ component }: ComponentInfoProps) {
           <Eye className="h-4 w-4" />
           <span>{component.views_count} views</span>
         </div>
-        <div className="flex items-center gap-1.5 text-sm text-gray-500">
-          <Heart className="h-4 w-4" />
+        <button
+          onClick={() => toggleLike(component.id)}
+          className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm transition-colors ${
+            liked
+              ? 'bg-red-50 text-red-500'
+              : 'text-gray-500 hover:bg-red-50 hover:text-red-500'
+          }`}
+        >
+          <Heart className={`h-4 w-4 ${liked ? 'fill-red-500' : ''}`} />
           <span>{component.likes_count} likes</span>
-        </div>
+        </button>
       </div>
 
       {/* Category badge */}

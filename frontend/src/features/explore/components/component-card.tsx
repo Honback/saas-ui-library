@@ -3,6 +3,7 @@ import { Heart, Eye } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar } from '@/components/ui/avatar';
 import { ComponentPreview } from './component-preview';
+import { useComponentStore } from '@/stores/component-store';
 import type { ComponentItem } from '@/types/component';
 
 interface ComponentCardProps {
@@ -10,6 +11,15 @@ interface ComponentCardProps {
 }
 
 export function ComponentCard({ component }: ComponentCardProps) {
+  const { toggleLike, isLiked } = useComponentStore();
+  const liked = isLiked(component.id);
+
+  const handleLike = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleLike(component.id);
+  };
+
   return (
     <Link to={`/components/${component.slug}`}>
       <Card className="group h-full transition-all hover:shadow-md">
@@ -32,10 +42,15 @@ export function ComponentCard({ component }: ComponentCardProps) {
               <span className="text-xs text-gray-500">{component.author_name}</span>
             </div>
             <div className="flex items-center gap-3 text-xs text-gray-400">
-              <span className="flex items-center gap-1">
-                <Heart className="h-3 w-3" />
+              <button
+                onClick={handleLike}
+                className="flex items-center gap-1 transition-colors hover:text-red-500"
+              >
+                <Heart
+                  className={`h-3.5 w-3.5 transition-colors ${liked ? 'fill-red-500 text-red-500' : ''}`}
+                />
                 {component.likes_count}
-              </span>
+              </button>
               <span className="flex items-center gap-1">
                 <Eye className="h-3 w-3" />
                 {component.views_count}

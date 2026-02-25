@@ -10,6 +10,7 @@ interface ComponentState {
   selectedCategory: string | null;
   sortBy: SortOption;
   searchQuery: string;
+  likedIds: Set<string>;
 
   fetchCategories: () => Promise<void>;
   fetchComponents: (categorySlug?: string | null, sort?: SortOption) => Promise<void>;
@@ -19,6 +20,21 @@ interface ComponentState {
   setSortBy: (sort: SortOption) => void;
   setSearchQuery: (query: string) => void;
   incrementViewCount: (id: string) => Promise<void>;
+  toggleLike: (id: string) => Promise<void>;
+  isLiked: (id: string) => boolean;
+}
+
+function loadLikedIds(): Set<string> {
+  try {
+    const raw = localStorage.getItem('liked_components');
+    return raw ? new Set(JSON.parse(raw)) : new Set();
+  } catch {
+    return new Set();
+  }
+}
+
+function saveLikedIds(ids: Set<string>) {
+  localStorage.setItem('liked_components', JSON.stringify([...ids]));
 }
 
 export const useComponentStore = create<ComponentState>((set, get) => ({
@@ -29,6 +45,7 @@ export const useComponentStore = create<ComponentState>((set, get) => ({
   selectedCategory: null,
   sortBy: 'featured',
   searchQuery: '',
+  likedIds: loadLikedIds(),
 
   fetchCategories: async () => {
     const { data } = await supabase
@@ -135,4 +152,34 @@ export const useComponentStore = create<ComponentState>((set, get) => ({
   incrementViewCount: async (id: string) => {
     await supabase.rpc('increment_view_count', { component_id: id });
   },
+
+  toggleLike: async (id: string) => {
+    const { likedIds, components, currentComponent } = get();
+    const wasLiked = likedIds.has(id);
+    const newLikedIds = new Set(likedIds);
+
+    if (wasLiked) {
+      newLikedIds.delete(id);
+      await supabase.rpc('decrement_like_count', { component_id: id });
+    } else {
+      newLikedIds.add(id);
+      await supabase.rpc('increment_like_count', { component_id: id });
+    }
+
+    saveLikedIds(newLikedIds);
+
+    const delta = wasLiked ? -1 : 1;
+    set({
+      likedIds: newLikedIds,
+      components: components.map((c) =>
+        c.id === id ? { ...c, likes_count: Math.max(0, c.likes_count + delta) } : c
+      ),
+      currentComponent:
+        currentComponent?.id === id
+          ? { ...currentComponent, likes_count: Math.max(0, currentComponent.likes_count + delta) }
+          : currentComponent,
+    });
+  },
+
+  isLiked: (id: string) => get().likedIds.has(id),
 }));

@@ -116,6 +116,14 @@ export interface Database {
         Args: { component_id: string };
         Returns: undefined;
       };
+      increment_like_count: {
+        Args: { component_id: string };
+        Returns: undefined;
+      };
+      decrement_like_count: {
+        Args: { component_id: string };
+        Returns: undefined;
+      };
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
