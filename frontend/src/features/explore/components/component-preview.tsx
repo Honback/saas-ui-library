@@ -721,6 +721,105 @@ const previews: Record<string, () => JSX.Element> = {
     </div>
   ),
 
+  'cosmic-button': () => (
+    <div className="flex flex-col items-center gap-1">
+      <div className="relative h-10 w-28 rounded-full bg-[#6a92ef]">
+        <div className="flex h-full items-center justify-center text-xs font-medium text-white">Hover Me!</div>
+      </div>
+      <div className="flex gap-2">
+        <div className="h-2 w-2 text-blue-400">&#9733;</div>
+        <div className="h-2 w-2 text-blue-400">&#9789;</div>
+        <div className="h-2 w-2 text-blue-400">&#9732;</div>
+      </div>
+    </div>
+  ),
+
+  'brutalist-button': () => (
+    <div className="flex h-[42px] w-[120px] items-center border-2 border-white bg-black px-2" style={{ outline: '2px solid #000', boxShadow: '4px 4px 0 #00a4ef' }}>
+      <div className="mr-1.5 grid grid-cols-2 gap-px" style={{ width: 16, height: 16 }}>
+        <div style={{ background: '#f25022' }} /><div style={{ background: '#7fba00' }} />
+        <div style={{ background: '#00a4ef' }} /><div style={{ background: '#ffb900' }} />
+      </div>
+      <div className="flex flex-col leading-none">
+        <span className="text-[7px] uppercase text-white">Get it from</span>
+        <span className="text-[10px] font-bold uppercase text-white">Microsoft</span>
+      </div>
+    </div>
+  ),
+
+  'heart-like-button': () => (
+    <div className="flex items-center gap-4">
+      <svg viewBox="0 0 16 16" className="h-8 w-8" style={{ fill: '#d1d5db' }}>
+        <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" fillRule="evenodd" />
+      </svg>
+      <svg viewBox="0 0 16 16" className="h-8 w-8" style={{ fill: '#fc3636' }}>
+        <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" fillRule="evenodd" />
+      </svg>
+    </div>
+  ),
+
+  'chaotic-orbit-loader': () => (
+    <div className="flex items-center gap-4">
+      <div className="h-6 w-6 rounded-full bg-indigo-500 opacity-70" />
+      <div className="h-8 w-8 rounded-full bg-pink-500 opacity-70" />
+      <div className="h-5 w-5 rounded-full bg-teal-500 opacity-70" />
+    </div>
+  ),
+
+  'neon-search-bar': () => (
+    <div className="relative w-full max-w-[180px]">
+      <div className="flex h-9 items-center rounded-md bg-gray-900 px-3" style={{ boxShadow: '0 0 10px rgba(255,100,220,0.2), 0 0 10px rgba(120,100,255,0.2)' }}>
+        <div className="h-3 w-3 rounded-full border border-white/50" />
+        <div className="ml-2 h-2 w-20 rounded bg-white/30" />
+      </div>
+    </div>
+  ),
+
+  'level-up-toast': () => (
+    <div className="flex h-12 w-[160px] items-center rounded-lg bg-white px-2 shadow-md">
+      <div className="h-6 w-6 rounded bg-indigo-100" />
+      <div className="ml-2 flex-1">
+        <div className="h-2 w-12 rounded bg-gray-700" />
+        <div className="mt-1 h-1.5 w-16 rounded bg-gray-400" />
+      </div>
+      <div className="h-5 w-8 rounded bg-indigo-500" />
+    </div>
+  ),
+
+  'ide-selector': () => (
+    <div className="flex h-24 w-16 flex-col gap-1 rounded-lg border border-gray-200 bg-white p-1.5">
+      <div className="flex-1 rounded bg-black" />
+      <div className="flex-1 rounded bg-gray-100" />
+      <div className="flex-1 rounded bg-gray-100" />
+    </div>
+  ),
+
+  'file-upload-card': () => (
+    <div className="w-[140px] rounded-xl bg-white p-3 shadow-md">
+      <div className="mx-auto h-2 w-14 rounded bg-gray-700" />
+      <div className="mt-2 rounded-md border-2 border-dashed border-gray-300 py-2 text-center text-[8px] text-gray-400">Choose File</div>
+      <div className="mt-1.5 h-4 rounded-lg bg-blue-50" />
+    </div>
+  ),
+
+  'social-tooltip': () => (
+    <div className="flex gap-2">
+      {['#333', '#1da1f2', '#ea4c89', '#0077b5'].map((c) => (
+        <div key={c} className="h-7 w-7 rounded-full bg-white shadow-sm" style={{ border: `2px solid ${c}` }} />
+      ))}
+    </div>
+  ),
+
+  'hex-pattern': () => (
+    <div className="h-16 w-full overflow-hidden rounded-lg bg-gray-900">
+      <div className="grid h-full grid-cols-4 gap-px p-2">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="rounded-sm bg-gray-700/50" />
+        ))}
+      </div>
+    </div>
+  ),
+
   'skeuomorphic-toggle': () => (
     <div className="flex items-center gap-3">
       <div className="relative h-[30px] w-[60px] rounded-full bg-white" style={{ boxShadow: 'inset 0 0 3px 2px rgba(255,255,255,1), inset 0 0 10px 1px rgba(0,0,0,0.3), inset 0 0 0 2px rgba(0,0,0,0.2)' }}>

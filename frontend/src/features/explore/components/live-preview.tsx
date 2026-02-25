@@ -53,6 +53,16 @@ import { HoverExpandCard } from '@/components/ui/hover-expand-card';
 import { ProfileCard } from '@/components/ui/profile-card';
 import { GlowCard } from '@/components/ui/glow-card';
 import { SkeuomorphicToggle } from '@/components/ui/skeuomorphic-toggle';
+import { CosmicButton } from '@/components/ui/cosmic-button';
+import { BrutalistButton } from '@/components/ui/brutalist-button';
+import { HeartLikeButton } from '@/components/ui/heart-like-button';
+import { ChaoticOrbitLoader } from '@/components/ui/chaotic-orbit-loader';
+import { NeonSearchBar } from '@/components/ui/neon-search-bar';
+import { LevelUpToast } from '@/components/ui/level-up-toast';
+import { IdeSelector } from '@/components/ui/ide-selector';
+import { FileUploadCard } from '@/components/ui/file-upload-card';
+import { SocialTooltip } from '@/components/ui/social-tooltip';
+import { HexPattern } from '@/components/ui/hex-pattern';
 
 // ─── Types ────────────────────────────────────────
 interface LivePreviewProps {
@@ -106,6 +116,8 @@ const demoMeta: Record<string, { dark?: boolean; gradient?: string }> = {
   'shimmer-button': { dark: true },
   'glass-card': { gradient: 'bg-gradient-to-br from-purple-500 via-pink-400 to-blue-500' },
   'interactive-showcase': { dark: true },
+  'neon-search-bar': { dark: true },
+  'hex-pattern': { dark: true },
 };
 
 // ─── BASIC UI ─────────────────────────────────────
@@ -948,12 +960,57 @@ function GlowCardDemo() {
 }
 
 function SkeuomorphicToggleDemo() {
+  return <SkeuomorphicToggle />;
+}
+
+function CosmicButtonDemo() {
+  return <CosmicButton>Hover Me!</CosmicButton>;
+}
+
+function BrutalistButtonDemo() {
+  return <BrutalistButton />;
+}
+
+function HeartLikeButtonDemo() {
   return (
-    <div className="flex items-center gap-6">
-      <SkeuomorphicToggle />
-      <SkeuomorphicToggle checked />
+    <div className="flex items-center gap-8">
+      <HeartLikeButton />
     </div>
   );
+}
+
+function ChaoticOrbitLoaderDemo() {
+  return (
+    <div className="flex items-center gap-8">
+      <ChaoticOrbitLoader size={30} color="#6366f1" />
+      <ChaoticOrbitLoader size={40} color="#ec4899" />
+      <ChaoticOrbitLoader size={50} color="#14b8a6" />
+    </div>
+  );
+}
+
+function NeonSearchBarDemo() {
+  return <NeonSearchBar placeholder="Search..." />;
+}
+
+function LevelUpToastDemo() {
+  return <LevelUpToast />;
+}
+
+function IdeSelectorDemo() {
+  return <IdeSelector />;
+}
+
+function FileUploadCardDemo() {
+  return <FileUploadCard />;
+}
+
+function SocialTooltipDemo() {
+  return <SocialTooltip />;
+}
+
+function HexPatternDemo() {
+  return <HexPattern className="h-full w-full rounded-lg" />;
 }
 
 // ─── Registry ─────────────────────────────────────
@@ -1027,4 +1084,14 @@ const demos: Record<string, React.FC> = {
   'profile-card': ProfileCardDemo,
   'glow-card': GlowCardDemo,
   'skeuomorphic-toggle': SkeuomorphicToggleDemo,
+  'cosmic-button': CosmicButtonDemo,
+  'brutalist-button': BrutalistButtonDemo,
+  'heart-like-button': HeartLikeButtonDemo,
+  'chaotic-orbit-loader': ChaoticOrbitLoaderDemo,
+  'neon-search-bar': NeonSearchBarDemo,
+  'level-up-toast': LevelUpToastDemo,
+  'ide-selector': IdeSelectorDemo,
+  'file-upload-card': FileUploadCardDemo,
+  'social-tooltip': SocialTooltipDemo,
+  'hex-pattern': HexPatternDemo,
 };
