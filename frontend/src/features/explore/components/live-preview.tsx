@@ -47,25 +47,33 @@ import { BentoGrid, BentoItem } from '@/components/ui/bento-grid';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { Marquee } from '@/components/ui/marquee';
 import { AnimatedBorder } from '@/components/ui/animated-border';
+import { PricingCard } from '@/components/ui/pricing-card';
+import { FeatureCard } from '@/components/ui/feature-card';
+import { HoverExpandCard } from '@/components/ui/hover-expand-card';
+import { ProfileCard } from '@/components/ui/profile-card';
+import { GlowCard } from '@/components/ui/glow-card';
 
 // ─── Types ────────────────────────────────────────
 interface LivePreviewProps {
   slug: string;
   mode?: 'compact' | 'full';
+  forceDark?: boolean;
   className?: string;
 }
 
 // ─── Main Component ───────────────────────────────
-export function LivePreview({ slug, mode = 'compact', className }: LivePreviewProps) {
+export function LivePreview({ slug, mode = 'compact', forceDark, className }: LivePreviewProps) {
   const Demo = demos[slug];
   if (!Demo) return <FallbackPreview />;
 
   const meta = demoMeta[slug];
-  const bgClass = meta?.dark
+  const bgClass = forceDark
     ? 'bg-gray-950'
-    : meta?.gradient
-      ? meta.gradient
-      : 'bg-gradient-to-br from-gray-50 via-white to-gray-50';
+    : meta?.dark
+      ? 'bg-gray-950'
+      : meta?.gradient
+        ? meta.gradient
+        : 'bg-gradient-to-br from-gray-50 via-white to-gray-50';
 
   return (
     <div
@@ -872,6 +880,72 @@ function InteractiveShowcaseDemo() {
   );
 }
 
+// ─── Uiverse Card Demos ──────────────────────────
+
+function PricingCardDemo() {
+  return (
+    <PricingCard
+      price="$150/hr"
+      title="Senior Backend Engineer"
+      description="Full-time position"
+      icon={<BarChart3 className="h-5 w-5 text-gray-600" />}
+      actionLabel="View"
+    />
+  );
+}
+
+function FeatureCardDemo() {
+  return (
+    <FeatureCard
+      number="01"
+      title="Abstract Design"
+      description="Build beautiful interfaces with reusable components and modern patterns."
+      icon={<LayoutDashboard className="h-8 w-8" />}
+    />
+  );
+}
+
+function HoverExpandCardDemo() {
+  return (
+    <div className="w-full max-w-sm">
+      <HoverExpandCard
+        title="Welcome to SaaS UI"
+        subtitle="Start building:"
+        highlight="Today"
+        accentColor="bg-amber-400"
+      />
+    </div>
+  );
+}
+
+function ProfileCardDemo() {
+  return (
+    <div className="flex gap-4">
+      <ProfileCard
+        name="Jane Doe"
+        role="Frontend Dev"
+        actionLabel="Follow"
+      />
+      <ProfileCard
+        name="John Smith"
+        role="Designer"
+        gradient="from-emerald-500 via-teal-500 to-cyan-400"
+        actionLabel="Follow"
+      />
+    </div>
+  );
+}
+
+function GlowCardDemo() {
+  return (
+    <GlowCard
+      title="SAAS UI"
+      heading="Love to Code."
+      description="Build beautiful interfaces with reusable components. Copy and paste into your project."
+    />
+  );
+}
+
 // ─── Registry ─────────────────────────────────────
 
 const demos: Record<string, React.FC> = {
@@ -937,4 +1011,9 @@ const demos: Record<string, React.FC> = {
   marquee: MarqueeDemo,
   'animated-border': AnimatedBorderDemo,
   'interactive-showcase': InteractiveShowcaseDemo,
+  'pricing-card': PricingCardDemo,
+  'feature-card': FeatureCardDemo,
+  'hover-expand-card': HoverExpandCardDemo,
+  'profile-card': ProfileCardDemo,
+  'glow-card': GlowCardDemo,
 };

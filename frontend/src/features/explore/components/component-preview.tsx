@@ -655,6 +655,72 @@ const previews: Record<string, () => JSX.Element> = {
     </div>
   ),
 
+  'pricing-card': () => (
+    <div className="w-full max-w-[140px]">
+      <div className="rounded-lg bg-amber-50 p-3">
+        <div className="flex justify-between">
+          <div className="h-2 w-10 rounded bg-gray-400" />
+          <div className="h-3 w-3 rounded bg-gray-300" />
+        </div>
+        <div className="mt-4 h-3 w-24 rounded bg-gray-600" />
+      </div>
+      <div className="mt-2 flex items-center justify-between px-1">
+        <div className="flex items-center gap-1.5">
+          <div className="h-5 w-5 rounded bg-gray-200" />
+          <div className="h-2 w-12 rounded bg-gray-300" />
+        </div>
+        <div className="h-4 w-10 rounded-full bg-gray-900" />
+      </div>
+    </div>
+  ),
+
+  'feature-card': () => (
+    <div className="relative w-full max-w-[120px] overflow-hidden rounded-tl-[2rem] bg-gray-100">
+      <div className="absolute right-0 top-3 h-3 w-12 bg-indigo-700" style={{ clipPath: 'polygon(10% 0, 100% 0, 100% 100%, 0 100%)' }} />
+      <div className="p-4 text-center">
+        <div className="mx-auto h-5 w-5 rounded bg-gray-300" />
+        <div className="mx-auto mt-2 h-2 w-16 rounded bg-gray-500" />
+        <div className="mx-auto mt-1 h-1.5 w-20 rounded bg-gray-300" />
+      </div>
+      <div className="mx-auto grid w-[110%] -translate-x-[5%] place-items-center rounded-b-xl bg-indigo-700 py-2">
+        <div className="-mt-4 flex h-8 w-8 items-center justify-center rounded-full border-[3px] border-indigo-700 bg-white text-[8px] font-black">01</div>
+      </div>
+    </div>
+  ),
+
+  'hover-expand-card': () => (
+    <div className="w-full max-w-[160px] overflow-hidden rounded-2xl bg-gray-900 p-4">
+      <div className="absolute -right-6 -top-6 h-10 w-10 rounded-full bg-amber-400" />
+      <div className="relative z-10">
+        <div className="h-2.5 w-24 rounded bg-white" />
+        <div className="mt-1 h-2 w-16 rounded bg-white/50" />
+        <div className="mt-4 flex gap-1">
+          <div className="h-2 w-8 rounded bg-white/60" />
+          <div className="h-2 w-12 rounded bg-yellow-400" />
+        </div>
+      </div>
+    </div>
+  ),
+
+  'profile-card': () => (
+    <div className="w-[100px] rounded-lg bg-gradient-to-br from-purple-600 via-indigo-500 to-violet-400 p-3 text-center">
+      <div className="mx-auto h-8 w-8 rounded-full bg-gray-200" />
+      <div className="mx-auto mt-2 h-2 w-12 rounded bg-white" />
+      <div className="mx-auto mt-1 h-1.5 w-16 rounded bg-white/60" />
+      <div className="mx-auto mt-3 h-4 w-12 rounded bg-gray-200" />
+    </div>
+  ),
+
+  'glow-card': () => (
+    <div className="w-full max-w-[160px] rounded-2xl border border-white/10 bg-gray-950 p-3">
+      <div className="rounded-xl p-4" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)', backgroundSize: '0.5rem 0.5rem' }}>
+        <div className="mx-auto h-2 w-10 rounded bg-gradient-to-r from-violet-400 to-cyan-400" />
+        <div className="mx-auto mt-2 h-3 w-20 rounded bg-white" />
+        <div className="mx-auto mt-1 h-1.5 w-24 rounded bg-white/40" />
+      </div>
+    </div>
+  ),
+
   _default: () => (
     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100">
       <div className="h-6 w-6 rounded bg-gray-300" />
