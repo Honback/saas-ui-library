@@ -52,6 +52,7 @@ import { FeatureCard } from '@/components/ui/feature-card';
 import { HoverExpandCard } from '@/components/ui/hover-expand-card';
 import { ProfileCard } from '@/components/ui/profile-card';
 import { GlowCard } from '@/components/ui/glow-card';
+import { SkeuomorphicToggle } from '@/components/ui/skeuomorphic-toggle';
 
 // ─── Types ────────────────────────────────────────
 interface LivePreviewProps {
@@ -946,6 +947,15 @@ function GlowCardDemo() {
   );
 }
 
+function SkeuomorphicToggleDemo() {
+  return (
+    <div className="flex items-center gap-6">
+      <SkeuomorphicToggle />
+      <SkeuomorphicToggle checked />
+    </div>
+  );
+}
+
 // ─── Registry ─────────────────────────────────────
 
 const demos: Record<string, React.FC> = {
@@ -1016,4 +1026,5 @@ const demos: Record<string, React.FC> = {
   'hover-expand-card': HoverExpandCardDemo,
   'profile-card': ProfileCardDemo,
   'glow-card': GlowCardDemo,
+  'skeuomorphic-toggle': SkeuomorphicToggleDemo,
 };

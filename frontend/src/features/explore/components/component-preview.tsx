@@ -721,6 +721,17 @@ const previews: Record<string, () => JSX.Element> = {
     </div>
   ),
 
+  'skeuomorphic-toggle': () => (
+    <div className="flex items-center gap-3">
+      <div className="relative h-[30px] w-[60px] rounded-full bg-white" style={{ boxShadow: 'inset 0 0 3px 2px rgba(255,255,255,1), inset 0 0 10px 1px rgba(0,0,0,0.3), inset 0 0 0 2px rgba(0,0,0,0.2)' }}>
+        <div className="absolute left-[5px] top-[5px] h-5 w-5 rounded-full" style={{ backgroundImage: 'linear-gradient(130deg, #757272 10%, #ffffff 11%, #726f6f 62%)', boxShadow: '0 1px 1px rgba(0,0,0,0.3)' }} />
+      </div>
+      <div className="relative h-[30px] w-[60px] rounded-full bg-white" style={{ boxShadow: 'inset 0 0 3px 2px rgba(255,255,255,1), inset 0 0 10px 1px rgba(0,0,0,0.3), inset 0 0 0 2px rgba(0,0,0,0.2)' }}>
+        <div className="absolute right-[5px] top-[5px] h-5 w-5 rounded-full" style={{ backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 70%)', boxShadow: '0 1px 1px rgba(0,0,0,0.3)' }} />
+      </div>
+    </div>
+  ),
+
   _default: () => (
     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100">
       <div className="h-6 w-6 rounded bg-gray-300" />
