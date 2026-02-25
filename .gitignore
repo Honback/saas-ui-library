@@ -30,3 +30,6 @@ logs/
 # Build
 build/
 out/
+
+# Private docs (internal project details)
+docs/PROJECT.md
